@@ -1,20 +1,20 @@
 --- 
 # information
 project: 
-  title: "title"
-  description: "description"
+  title: "wb_openram_shim"
+  description: "Wrapped version of Wishbone OpenRam Shim/Wrapper"
   picture: docs/empty.png
-  author: "Author"
+  author: "Embelon"
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2 & wishbone
-interfaces: ['la1', 'gpio']
+interfaces: ['wishbone']
 
 # test within caravel
 caravel_test:
   recipe: "coco_test"
   directory: "caravel_test"
-  id: 1
+  id: 10
   module_name: "wrapped_project"
   instance_name: "wrapped_project"
 
@@ -36,11 +36,11 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - other source files here
+    - wb_openram_wrapper/src/wb_openram_wrapper.v
 
 # gds - check nothing on metal 5, DRC & LVS
 gds:
   directory: "gds"
-  gds_filename: "project.gds"
-  lvs_filename: "project.lvs.powered.v"
-  lef_filename: "project.lef"
+  gds_filename: "wrapped_wb_openram_shim.gds"
+  lvs_filename: "wrapped_wb_openram_shim.lvs.powered.v"
+  lef_filename: "wrapped_wb_openram_shim.lef"

@@ -3,14 +3,14 @@
     `define MPRJ_IO_PADS 38    
 `endif
 
-//`define USE_WB  0
-`define USE_LA  1
-`define USE_IO  1
+`define USE_WB  1
+//`define USE_LA  1
+//`define USE_IO  1
 //`define USE_MEM 0
 //`define USE_IRQ 0
 
 // update this to the name of your module
-module wrapped_project(
+module wrapped_wb_openram_shim(
 `ifdef USE_POWER_PINS
     inout vccd1,	// User area 1 1.8V supply
     inout vssd1,	// User area 1 digital ground
@@ -54,7 +54,17 @@ module wrapped_project(
 `endif
     
     // active input, only connect tristated outputs if this is high
-    input wire active
+    input wire active,
+
+    // OpenRAM direct interface
+    output wire openram_clk0,         	// clock
+    output wire openram_csb0,         	// active low chip select
+    output wire openram_web0,         	// active low write control
+    output wire [3:0] openram_wmask0,   // write mask
+    output wire [7:0] openram_addr0,
+    output wire [31:0] openram_dout0,
+    input wire [31:0] openram_din0
+
 );
 
     // all outputs must be tristated before being passed onto the project
@@ -107,6 +117,36 @@ module wrapped_project(
     // Instantiate your module here, 
     // connecting what you need of the above signals. 
     // Use the buffered outputs for your module's outputs.
+
+    wb_openram_wrapper wb_openram_shim
+    (
+    `ifdef USE_POWER_PINS
+    	.vccd1 (vccd1),	    // User area 1 1.8V supply
+    	.vssd1 (vssd1),	    // User area 1 digital ground
+    `endif
+
+	// Wishbone port A
+    	.wb_clk_i       (wb_clk_i),
+    	.wb_rst_i       (wb_rst_i),
+    	.wbs_stb_i      (wbs_stb_i),
+    	.wbs_cyc_i      (wbs_cyc_i),
+    	.wbs_we_i       (wbs_we_i),
+    	.wbs_sel_i      (wbs_sel_i),
+    	.wbs_dat_i      (buf_wbs_dat_o),
+    	.wbs_adr_i      (wbs_adr_i),
+    	.wbs_ack_o      (buf_wbs_ack_o),
+    	.wbs_dat_o      (wbs_dat_i),
+
+    	// OpenRAM interface
+    	// Port 0: RW
+    	.ram_clk0       (openram_clk0),         // clock
+    	.ram_csb0       (openram_csb0),         // active low chip select
+    	.ram_web0       (openram_web0),         // active low write control
+    	.ram_wmask0     (openram_wmask0),       // write mask
+    	.ram_addr0      (openram_addr0),
+    	.ram_din0       (openram_din0),
+    	.ram_dout0      (openram_dout0)
+   );
 
 endmodule 
 `default_nettype wire
