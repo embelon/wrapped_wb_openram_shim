@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Thu Nov 11 12:26:11 2021
+[*]
+[dumpfile] "/home/matt/work/asic-workshop/shuttle3-mpw-3/caravel_user_project/verilog/dv/caravel_test/wb_openram.vcd"
+[dumpfile_mtime] "Thu Nov 11 12:24:30 2021"
+[dumpfile_size] 631256369
+[savefile] "/home/matt/work/asic-workshop/shuttle3-mpw-3/caravel_user_project/verilog/dv/caravel_test/openram.gtkw"
+[timestart] 0
+[size] 1998 1153
+[pos] 230 112
+*-26.700001 381000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] wb_openram_tb.
+[treeopen] wb_openram_tb.uut.
+[treeopen] wb_openram_tb.uut.mprj.
+[sst_width] 343
+[signals_width] 580
+[sst_expanded] 1
+[sst_vpaned_height] 640
+@28
+wb_openram_tb.flash_clk
+wb_openram_tb.flash_csb
+wb_openram_tb.flash_io0
+wb_openram_tb.flash_io1
+wb_openram_tb.power1
+wb_openram_tb.power2
+wb_openram_tb.power3
+wb_openram_tb.power4
+@23
+wb_openram_tb.checkpoint[5:0]
+@28
+wb_openram_tb.uut.mprj.wrapped_wb_openram_shim_10.openram_clk0
+wb_openram_tb.uut.mprj.wrapped_wb_openram_shim_10.openram_csb0
+@22
+wb_openram_tb.uut.mprj.wrapped_wb_openram_shim_10.openram_din0[31:0]
+wb_openram_tb.uut.mprj.wrapped_wb_openram_shim_10.openram_dout0[31:0]
+@28
+wb_openram_tb.uut.mprj.wrapped_wb_openram_shim_10.openram_web0
+@22
+wb_openram_tb.uut.mprj.wrapped_wb_openram_shim_10.openram_wmask0[3:0]
+[pattern_trace] 1
+[pattern_trace] 0
