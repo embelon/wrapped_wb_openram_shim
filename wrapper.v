@@ -62,8 +62,8 @@ module wrapped_wb_openram_shim(
     output wire openram_web0,         	// active low write control
     output wire [3:0] openram_wmask0,   // write mask
     output wire [7:0] openram_addr0,
-    output wire [31:0] openram_dout0,
-    input wire [31:0] openram_din0
+    output wire [31:0] openram_dout0,   // output of openram
+    input wire [31:0] openram_din0      // input to openram
 
 );
 
@@ -132,10 +132,10 @@ module wrapped_wb_openram_shim(
     	.wbs_cyc_i      (wbs_cyc_i),
     	.wbs_we_i       (wbs_we_i),
     	.wbs_sel_i      (wbs_sel_i),
-    	.wbs_dat_i      (buf_wbs_dat_o),
+    	.wbs_dat_o      (buf_wbs_dat_o),
     	.wbs_adr_i      (wbs_adr_i),
     	.wbs_ack_o      (buf_wbs_ack_o),
-    	.wbs_dat_o      (wbs_dat_i),
+    	.wbs_dat_i      (wbs_dat_i),
 
     	// OpenRAM interface
     	// Port 0: RW
@@ -144,8 +144,8 @@ module wrapped_wb_openram_shim(
     	.ram_web0       (openram_web0),         // active low write control
     	.ram_wmask0     (openram_wmask0),       // write mask
     	.ram_addr0      (openram_addr0),
-    	.ram_din0       (openram_din0),
-    	.ram_dout0      (openram_dout0)
+    	.ram_din0       (openram_dout0),        // swap these over here
+    	.ram_dout0      (openram_din0)          // swap these over here
    );
 
 endmodule 
