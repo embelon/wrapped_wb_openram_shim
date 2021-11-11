@@ -1,15 +1,6 @@
-# Information about your project
+# Wishbone Shim for OpenRAM
 
-This is a template project you can clone and use to take part in the multi project submission to the
-Google/Efabless/Skywater shuttle.
-
-The tools that will test and create the aggregated design are here: https://github.com/mattvenn/multi_project_tools
-
-# Project info.yaml
-
-You need to fill in the fields of [info.yaml](info.yaml)
-
-See [here for more information](https://github.com/mattvenn/multi_project_tools/blob/main/docs/project_spec.md)
+This is a very simple module that just connects an OpenRAM instance to wishbone.
 
 # License
 

@@ -3,8 +3,8 @@
 project: 
   title: "wb_openram_shim"
   description: "Wrapped version of Wishbone OpenRam Shim/Wrapper"
-  picture: docs/empty.png
-  author: "Embelon"
+  picture: docs/shim.png
+  author: "Embelon & Matt Venn"
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2 & wishbone
