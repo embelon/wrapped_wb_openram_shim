@@ -3,25 +3,25 @@
 project: 
   title: "wb_openram_shim"
   description: "Wrapped version of Wishbone OpenRam Shim/Wrapper"
-  picture: docs/empty.png
-  author: "Embelon"
+  picture: docs/shim.png
+  author: "Embelon & Matt Venn"
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2 & wishbone
-interfaces: ['wishbone']
+interfaces: ['wishbone', 'openram' ]
 
 # test within caravel
 caravel_test:
-  recipe: "coco_test"
-  directory: "caravel_test"
+  recipe: "all"
+  directory: "openram_test"
   id: 10
-  module_name: "wrapped_project"
-  instance_name: "wrapped_project"
+  module_name: "wrapped_wb_openram_shim"
+  instance_name: "wrapped_wb_openram_shim"
 
 # module test
 module_test:
-  recipe: "all" 
-  directory: "project directory"
+  recipe: "test" 
+  directory: "."
   makefile: "Makefile"
 
 # run the wrapper formal proof
